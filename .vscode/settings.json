@@ -1,0 +1,30 @@
+{
+    "cSpell.enabledFileTypes": {
+        "toml": false
+    },
+    "cSpell.words": [
+        "annot",
+        "boxplot",
+        "boxplots",
+        "Boxplots",
+        "cmap",
+        "coolwarm",
+        "dropna",
+        "dtypes",
+        "fillna",
+        "folium",
+        "hiperparâmetros",
+        "histplot",
+        "inplace",
+        "isnull",
+        "matplotlib",
+        "pred",
+        "pyplot",
+        "rmse",
+        "RMSE",
+        "seaborn",
+        "sklearn",
+        "superhosts",
+        "xticks"
+    ]
+}
