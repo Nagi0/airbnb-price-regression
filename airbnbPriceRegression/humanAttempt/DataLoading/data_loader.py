@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from dotenv import load_dotenv
 import polars as pl
 from kagglehub import dataset_download
-from airbnbPriceRegression.humanAttemp.DataLoading.utils import PolarsUtils
+from airbnbPriceRegression.humanAttempt.DataLoading.utils import PolarsUtils
 
 
 @dataclass()
@@ -29,20 +29,25 @@ class DataLoader:
             .collect()
         ).drop("host_since")
 
-        self.data = PolarsUtils.replace_value(self.data, "host_is_superhost", "f", False)
-        self.data = PolarsUtils.replace_value(self.data, "host_is_superhost", "t", True)
+        self.data = PolarsUtils.replace_value(self.data, "host_is_superhost", "f", 0)
+        self.data = PolarsUtils.replace_value(self.data, "host_is_superhost", "t", 1)
+        self.data = self.data.with_columns(pl.col("host_is_superhost").cast(pl.Int8))
 
-        self.data = PolarsUtils.replace_value(self.data, "host_identity_verified", "f", False)
-        self.data = PolarsUtils.replace_value(self.data, "host_identity_verified", "t", True)
+        self.data = PolarsUtils.replace_value(self.data, "host_identity_verified", "f", 0)
+        self.data = PolarsUtils.replace_value(self.data, "host_identity_verified", "t", 1)
+        self.data = self.data.with_columns(pl.col("host_identity_verified").cast(pl.Int8))
 
-        self.data = PolarsUtils.replace_value(self.data, "is_location_exact", "f", False)
-        self.data = PolarsUtils.replace_value(self.data, "is_location_exact", "t", True)
+        self.data = PolarsUtils.replace_value(self.data, "is_location_exact", "f", 0)
+        self.data = PolarsUtils.replace_value(self.data, "is_location_exact", "t", 1)
+        self.data = self.data.with_columns(pl.col("is_location_exact").cast(pl.Int8))
 
-        self.data = PolarsUtils.replace_value(self.data, "instant_bookable", "f", False)
-        self.data = PolarsUtils.replace_value(self.data, "instant_bookable", "t", True)
+        self.data = PolarsUtils.replace_value(self.data, "instant_bookable", "f", 0)
+        self.data = PolarsUtils.replace_value(self.data, "instant_bookable", "t", 1)
+        self.data = self.data.with_columns(pl.col("instant_bookable").cast(pl.Int8))
 
-        self.data = PolarsUtils.replace_value(self.data, "is_business_travel_ready", "f", False)
-        self.data = PolarsUtils.replace_value(self.data, "is_business_travel_ready", "t", True)
+        self.data = PolarsUtils.replace_value(self.data, "is_business_travel_ready", "f", 0)
+        self.data = PolarsUtils.replace_value(self.data, "is_business_travel_ready", "t", 1)
+        self.data = self.data.with_columns(pl.col("is_business_travel_ready").cast(pl.Int8))
 
         self.data = PolarsUtils.count_elements(self.data, "host_verifications", ",", "host_verifications_number").drop(
             "host_verifications"
@@ -66,3 +71,4 @@ if __name__ == "__main__":
     dummy_columns = literal_eval(os.environ["DUMMY_COLUMNS"])
     data_loader.preprocess(dummy_columns)
     print(data_loader)
+    # data_loader.data.write_csv("dataset.csv")

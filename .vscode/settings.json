@@ -3,12 +3,14 @@
         "toml": false
     },
     "cSpell.words": [
+        "airbnb",
         "annot",
         "boxplot",
         "boxplots",
         "Boxplots",
         "cmap",
         "coolwarm",
+        "dataclasses",
         "dropna",
         "dtypes",
         "fillna",
@@ -17,14 +19,17 @@
         "histplot",
         "inplace",
         "isnull",
+        "kagglehub",
         "matplotlib",
         "pred",
         "pyplot",
         "rmse",
         "RMSE",
+        "scikit",
         "seaborn",
         "sklearn",
         "superhosts",
+        "tensorflow",
         "xticks"
     ]
 }
